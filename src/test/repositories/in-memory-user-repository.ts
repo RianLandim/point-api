@@ -5,6 +5,14 @@ export class InMemoryUserRepository implements UsersRepository {
 	public users: User[] = [];
 
 	async create(user: User): Promise<void> {
+		const alreadyExists = this.users.find(
+			(item) => item.username === user.username,
+		);
+
+		if (alreadyExists) {
+			throw Error('Email já cadastrado');
+		}
+
 		this.users.push(user);
 	}
 
@@ -16,11 +24,11 @@ export class InMemoryUserRepository implements UsersRepository {
 		}
 	}
 
-	async findOne(userId: string): Promise<User | null> {
+	async findOne(userId: string): Promise<User> {
 		const user = this.users.find((item) => item.id === userId);
 
 		if (!user) {
-			return null;
+			throw Error('Nenhum usuário cadastrado');
 		}
 
 		return user;

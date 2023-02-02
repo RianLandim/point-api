@@ -1,7 +1,8 @@
-import { User } from '../entities/user';
+import { User as UserEntity } from '@app/entities/user';
+import { User as PrismaUser } from '@prisma/client';
 
 export abstract class UsersRepository {
-	abstract create(user: User): Promise<void>;
-	abstract save(user: User): Promise<void>;
-	abstract findOne(userId: string): Promise<User | null>;
+	abstract create(user: UserEntity): Promise<void>;
+	abstract save(user: UserEntity): Promise<void>;
+	abstract findOne(userId: string): Promise<PrismaUser>;
 }

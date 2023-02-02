@@ -2,7 +2,7 @@ import { compareSync } from 'bcrypt';
 import { randomUUID } from 'crypto';
 import { User } from './user';
 
-describe('User entitie test', () => {
+describe('User entity test', () => {
 	it('Should be able to create an user', () => {
 		const user = new User({
 			enterpriseId: randomUUID(),

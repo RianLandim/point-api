@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { User } from 'src/application/entities/user';
-import { UsersRepository } from 'src/application/repositories/users-repository';
+import { User } from '../../../application/entities/user';
+import { UsersRepository } from '../../../application/repositories/users-repository';
 
 interface CreateUserRequest {
 	username: string;
