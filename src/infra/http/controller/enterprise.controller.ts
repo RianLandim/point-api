@@ -2,7 +2,7 @@ import { CreateEnterprise } from '@app/usecases/enterprises/create-enterprise-us
 import { Controller, Post } from '@nestjs/common';
 import { CreateEnterpriseBody } from '../dtos/create-enterprise-body';
 
-@Controller()
+@Controller('enterprise')
 export class EnterpriseController {
 	constructor(private createEnterprise: CreateEnterprise) {}
 

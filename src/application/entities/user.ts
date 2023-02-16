@@ -1,6 +1,6 @@
 import { randomUUID } from 'crypto';
 import { Replace } from 'src/helpers/replace';
-import { hashSync } from 'bcrypt';
+import { genSalt, genSaltSync, hashSync } from 'bcrypt';
 
 interface UserProps {
 	username: string;
@@ -19,10 +19,11 @@ export class User {
 		props: Replace<UserProps, { createdAt?: Date; updatedAt?: Date }>,
 	) {
 		this._id = randomUUID();
+		const salt = genSaltSync(16);
 
 		this.props = {
 			...props,
-			password: hashSync(props.password, 16),
+			password: hashSync(props.password, salt),
 			createdAt: props.createdAt ?? new Date(),
 			updatedAt: props.updatedAt ?? new Date(),
 		};
