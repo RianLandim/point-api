@@ -10,7 +10,7 @@ export class AuthController {
 		private validateUser: ValidateUser,
 	) {}
 
-	@Post('login')
+	@Post()
 	async login(@Body() credentials: LoginBody) {
 		const { username, password } = credentials;
 		const user = await this.validateUser.execute(username, password);
